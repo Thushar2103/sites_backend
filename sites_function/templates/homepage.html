@@ -1,0 +1,310 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');  
+
+        body {
+            font-family: "Poppins", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa; /* Soft background color */
+            background-image: radial-gradient(#444cf7 0.5px, transparent 0.5px), radial-gradient(#444cf7 0.5px, #f8f9fa 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+        }
+
+        .navbar {
+            transition-duration: 0.4s;
+            position: fixed;
+            width: 100%; 
+            height: 70px;
+            z-index: 1000;
+            background-color: #4A148C; /* Consistent navbar color */
+        } 
+
+        .navbar-brand {
+            font-family: "Pacifico", cursive;
+            color: #ffffff; /* Ensure contrast */
+        }
+
+        button {
+            background-color: #4A148C; /* Change button color */
+            color: white; 
+            padding: 10px 20px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-size: 16px; 
+            transition: background-color 0.3s, transform 0.2s; 
+        }
+
+        button:hover {
+            background-color: #4A148C; /* Darker on hover */
+        }
+
+        .header-bg {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            text-align: center;
+        }
+
+        .header-bg h1 {
+            font-size: 3em; /* Larger title */
+            margin-bottom: 10px; /* More space below title */
+        }
+
+        .features-section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .features-section > h1 {
+            margin-bottom: 40px; /* Space between title and features */
+            font-size: 2.5em; /* Larger heading */
+        }
+
+        .features {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            gap: 30px; /* Space between features */
+        }
+
+        .feature {
+            width: 300px; /* Fixed width for features */
+            padding: 30px;
+            background-color: #4A148C;
+            border-radius: 20px;
+            color: white;
+            transition: transform 0.2s;
+        }
+
+        .feature:hover {
+            transform: scale(1.05); 
+        }
+
+        .feature img {
+            width: 80px; 
+            height: 80px; 
+            margin-bottom: 20px;
+        }
+
+        .search {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 0;
+        }
+        
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction:column;
+            background-color: #4A148C; /* Background color for emphasis */
+            color: white;
+            padding: 40px;
+            border-radius: 15px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            text-align: center;
+            height:70vh;
+            width: 95vw; /* Responsive width */
+             
+        }
+        
+        .search-container h1 {
+            margin-bottom: 20px;
+            font-size: 2.5em; 
+        }
+        
+        .search-container p {
+            margin-bottom: 30px;
+            font-size: 1.2em; 
+        }
+        
+        .search-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .search-form input[type="text"] {
+            padding: 12px;
+            border: none;
+            border-radius: 5px 0 0 5px; /* Rounded left corners */
+            width: 300px; /* Fixed width */
+            font-size: 1em;
+        }
+        
+        
+        .search-form button {
+            padding: 12px 20px;
+            background-color: #28a745; /* Green background */
+            border: none;
+            border-radius: 0 5px 5px 0; /* Rounded right corners */
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        
+
+        .feedback-section {
+            background-color: #f2f2f2;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .feedback-button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #4A148C;
+            border-radius: 5px;
+            transition: 0.2s;
+        }
+
+        .feedback-button:hover {
+            background-color: #4A148C; 
+            opacity:90%;
+            text-decoration:none;
+            color: #fff;
+        }
+
+        .footer {
+            background-color: #4A148C;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 788px) {
+            .features {
+                flex-direction: row;
+                justify-content: space-around; /* Evenly distribute features */
+            }
+            .search-form input[type="text"] {
+                width: 200px; /* Responsive width for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark" id="navbar">
+        <a class="navbar-brand" href="#">நிலம்</a>
+        <form class="form-inline">
+            <a href="{{ frontend_url }}">Login</a>
+        </form> 
+    </nav>
+
+    <main>
+        <div class="header-bg">
+            <div class="content">
+                <h1>Tascuit Nilam</h1>
+                <p>An no-code single-page website builder to share your thoughts and knowledge</p>
+            </div>
+        </div>
+
+        <div class="features-section">
+            <h1>Features</h1>
+            <div class="features">
+                <div class="feature">
+                    <img class="cards-icon" alt="Ease to use" src="{% static 'assets/editicon.svg' %}">
+                    <div class="tile">Ease to use</div>
+                    <p>User Friendly single website builder with easy to modify editor</p>
+                </div>
+                <div class="feature">
+                    <img class="coin-icon" alt="Get what you see" src="{% static 'assets/editicon.svg' %}">
+                    <div class="tile">Get what you see</div>
+                    <p>Transfer your payment all over the world with no payment fee.</p>
+                </div>
+                <div class="feature">
+                    <img class="purse-icon" alt="Hosting" src="{% static 'assets/editicon.svg' %}">
+                    <div class="tile">Hosting</div>
+                    <p>The right place to keep your credit and debit cards, boarding passes & more.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="search">
+            <div class="search-container">
+                <h1>Site Searcher</h1>
+                <p>Looking for a site? Enter its ID</p>
+                <form class="search-form" id="siteSearchForm">
+                    <input type="text" name="uuid" placeholder="Enter site ID..." required>
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+        <script>
+            document.getElementById('siteSearchForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const uuid = event.target.querySelector('input[name="uuid"]').value;
+                window.location.href = `/sites/${uuid}/`;  // Redirect to the UUID path
+            });
+        </script>
+        
+        <div class="feedback-section">
+            <div class="feedback-container">
+                <h2>We Value Your Feedback</h2>
+                <p>Your thoughts are important to us! Let us know how we can improve.</p>
+                <br>
+                <a href="https://contact-form-j5vq.onrender.com" class="feedback-button">Give Feedback</a>
+            </div>
+        </div>
+
+    </main>
+  
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="company-name">Designed and Developed by Tascuit🩷</p>
+            <h5>Contact</h5>
+            <a href="mailto:wetascuit@gmail.com" class="email">wetascuit@gmail.com</a>
+        </div>
+    </footer>
+
+    <script>
+        let lastScrollTop = 0;
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', function() {
+            let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            navbar.style.transform = currentScroll > lastScrollTop ? 'translateY(-100%)' : 'translateY(0)';
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        });
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                navbar.style.backgroundColor = "#4A148C"; 
+                navbar.style.color = "#FFFFFF"; 
+            } else {
+                navbar.style.backgroundColor = "transparent"; 
+                navbar.style.color = "#000000"; 
+            }
+        };
+    </script>
+
+</body>
+</html>
