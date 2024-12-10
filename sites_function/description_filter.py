@@ -1,18 +1,13 @@
-from django import template
 import re
 
-register = template.Library()
-
-@register.filter
-def strip_html(value):
-    """Remove HTML tags from text."""
+def strip_html(content):
+    """Remove HTML tags from a string."""
     clean = re.compile('<.*?>')
-    return re.sub(clean, '', value)
+    return re.sub(clean, '', content)
 
-@register.filter
-def truncate_words(value, word_count=30):
-    """Truncate text to a specified word count."""
-    words = value.split()
+def truncate_words(content, word_count=30):
+    """Truncate the string to the given number of words."""
+    words = content.split()
     if len(words) > word_count:
         return ' '.join(words[:word_count]) + '...'
-    return value
+    return content

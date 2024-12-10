@@ -1,13 +1,14 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{sites_html_content.title}}</title>
+    <link rel="icon" type="image/png" href="{% static 'assets/Nilam.png' %}">
 
     <meta property="og:title" content="{{sites_html_content.title}}">
-    <meta property="og:description" content="{{ sites_html_content.htmlcontent|strip_html|truncate_words:30 }}">
+    <meta property="og:description" content="{{ truncated_description }}">
     <meta property="og:image" content="{% static 'assets/Nilam.png' %}">
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
     <meta property="og:type" content="website">

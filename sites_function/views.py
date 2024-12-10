@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import get_object_or_404,render
 from rest_framework import status
 from django.contrib.auth.models import User
+from sites_function.description_filter import strip_html, truncate_words
 from sites_function.models import SitesFormat
 from django.contrib.auth.models import User
 from rest_framework.response import Response
@@ -172,9 +173,13 @@ def sitesview(request, uuid):
             'message': message,
             'sites_html_content': None, 
         })
+    
+    stripped_html = strip_html(sites_html_content.htmlcontent)
+    truncated_description = truncate_words(stripped_html, word_count=30)
 
     return render(request, 'sites_format.html', {
         'sites_html_content': sites_html_content,
+        'truncated_description': truncated_description,
         'message': None,
     })
 

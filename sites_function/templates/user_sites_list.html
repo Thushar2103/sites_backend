@@ -1,10 +1,12 @@
 
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ user.username }}</title>
+    <link rel="icon" type="image/png" href="{% static 'assets/Nilam.png' %}">
 
     <meta property="og:title" content="{{ user.username }}">
     <meta property="og:description" content="Explore Sites Created by {{ user.username }}">
@@ -25,32 +27,6 @@
           min-height: 100vh;
           }
 
-          .loading-spinner {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background: rgba(255, 255, 255, 0.7);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid #3498db;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
         
         .navbar {
             justify-content: center;
@@ -128,68 +104,19 @@
         </style>
 </head>
 <body>
-    <div id="loading-spinner">
-        <div class="spinner"></div>
-    </div>
+   
     <nav class="navbar navbar-dark" style="background-color: #4A148C;" id="navbar">
  <a class="navbar-brand" href="#">
     {{ user.username }}
   </a> 
 </nav>
-    {% comment %} <main>
-        <h1>Sites for {{ user.username }}</h1>
-        <ul>
-            {% for site in user_sites %}
-                <li>
-                    <h2>{{ site.title }}</h2>
-                    <p>Date: {{ site.date_time }}</p>
-                    <p>JSON Content: {{ site.jsoncontent }}</p>
-                    
-                    <p>HTML Content: {{ site.htmlcontent }}</p> 
-                    
-                </li>
-                
-            {% empty %}
-                <li>No sites available for this user.</li>
-            {% endfor %}
-        </ul>
-        {{ site.htmlcontent }}
-        
-    </main> {% endcomment %}
-
-    {% comment %} <main class="container mt-4">
-        <h1>Sites for {{ user.username }}</h1>
-        <ul class="list-unstyled">
-            {% for site in user_sites %}
-                <li class="card mb-3">
-                    <div class="card-body">
-                        <h2 class="card-title">{{ site.title }}</h2>
-                        <p class="card-text"><strong>Date:</strong> {{ site.date_time }}</p>
-                        <p class="card-text"><strong>JSON Content:</strong> {{ site.jsoncontent }}</p>
-                        <div class="card-text">
-                            <strong>HTML Content:</strong>
-                            <div class="border rounded p-2" style="background-color: #f8f9fa;">
-                                {{ site.htmlcontent|safe }}
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            {% empty %}
-                <li>No sites available for this user.</li>
-            {% endfor %}
-        </ul>
-    </main> {% endcomment %}
-    {% load static %}
     <main class="container mt-4">
-        {% comment %} <h1>Sites Cooked by {{ user.username }}.</h1> {% endcomment %}
         <div class="row">
             {% for site in user_sites %}
                 <div class="col-md-4 mb-3">
                     <div class="card small-card">
                         <div class="card-body">
-                            {% comment %} <h2>Title</h2> {% endcomment %}
                             <h2>{{ site.title }}</h2>
-                            {% comment %} <h5 class="card-title">{{ site.title }}</h5> {% endcomment %}
                             <br>
                             <p class="card-text"><strong>Site ID: </strong>{{ site.id }}</p>
                             <p class="card-text"><strong>Updated On:</strong> {{ site.date_time }}</p>
