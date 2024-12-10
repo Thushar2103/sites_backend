@@ -5,6 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
+
+    <meta property="og:title" content="Welcome to Tascuit Nilam">
+    <meta property="og:description" content="An Simple Single Webpage Builder">
+    <meta property="og:image" content="{% static 'assets/Nilam.png' %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap');
